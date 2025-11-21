@@ -2,8 +2,8 @@
 Script to create all database tables
 Run this after the database is running
 """
-from backend.models.base import Base, engine
-from backend.models import *  # noqa: F403, F401
+from models.base import Base, engine
+from models import *  # noqa: F403, F401
 
 def create_tables():
     print("Creating all tables...")

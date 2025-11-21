@@ -1,7 +1,7 @@
-from backend.models.base import Base, get_db
-from backend.models.user import User, UserRole
-from backend.models.exercise import Exercise, ExerciseType, ResistanceProfile, MuscleGroup
-from backend.models.routine import (
+from models.base import Base, get_db
+from models.user import User, UserRole
+from models.exercise import Exercise, ExerciseType, ResistanceProfile, MuscleGroup
+from models.routine import (
     Macrocycle,
     Microcycle,
     TrainingDay,

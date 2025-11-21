@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from datetime import datetime
 import enum
 import uuid
-from backend.models.base import Base
+from models.base import Base
 
 
 class ExerciseType(str, enum.Enum):
