@@ -1,9 +1,9 @@
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
-from backend.models.base import get_db
-from backend.models.user import User
-from backend.core.security import decode_access_token
+from models.base import get_db
+from models.user import User
+from core.security import decode_access_token
 
 security = HTTPBearer()
 
@@ -52,7 +52,7 @@ def get_current_active_user(current_user: User = Depends(get_current_user)) -> U
 
 def require_trainer(current_user: User = Depends(get_current_user)) -> User:
     """Require the current user to be a trainer or admin"""
-    from backend.models.user import UserRole
+    from models.user import UserRole
 
     if current_user.role not in [UserRole.TRAINER, UserRole.ADMIN]:
         raise HTTPException(
@@ -64,7 +64,7 @@ def require_trainer(current_user: User = Depends(get_current_user)) -> User:
 
 def require_admin(current_user: User = Depends(get_current_user)) -> User:
     """Require the current user to be an admin"""
-    from backend.models.user import UserRole
+    from models.user import UserRole
 
     if current_user.role != UserRole.ADMIN:
         raise HTTPException(
