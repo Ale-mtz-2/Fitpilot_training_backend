@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from api.routers import auth
 
 app = FastAPI(
     title="Fit Pilot API",
@@ -16,8 +17,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# TODO: Include routers when created
-# app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
+# Include routers
+app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
+
+# TODO: Add more routers
 # app.include_router(exercises.router, prefix="/api/exercises", tags=["exercises"])
 # app.include_router(routines.router, prefix="/api/routines", tags=["routines"])
 # app.include_router(ai_generator.router, prefix="/api/ai", tags=["ai"])
