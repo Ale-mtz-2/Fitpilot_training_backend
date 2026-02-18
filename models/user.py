@@ -20,6 +20,8 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
     full_name = Column(String, nullable=False)
     role = Column(Enum(UserRole), default=UserRole.CLIENT, nullable=False)
+    preferred_language = Column(String(5), default="es", nullable=False)
+    profile_image_url = Column(String, nullable=True)
     is_active = Column(Boolean, default=True, nullable=False)
     is_verified = Column(Boolean, default=False, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)

@@ -1,4 +1,4 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from typing import Optional
 
 
@@ -33,8 +33,20 @@ class Settings(BaseSettings):
     FRONTEND_URL: str = "http://localhost:3000"
     MOBILE_SCHEME: str = "fitpilot://"
 
-    class Config:
-        env_file = ".env"
+    # Ollama (LLM local para traducción)
+    OLLAMA_HOST: str = "http://localhost:11434"
+    OLLAMA_MODEL: str = "llama3.2:3b"
+
+    # AI Optimization Settings
+    AI_USE_PROMPT_CACHING: bool = True
+    AI_USE_COMPRESSED_OUTPUT: bool = True
+    AI_FILTER_CATALOG: bool = True
+    AI_USE_PHASED_GENERATION: bool = True
+
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        extra="ignore"  # allow keys in .env that we don't explicitly model
+    )
 
 
 settings = Settings()
