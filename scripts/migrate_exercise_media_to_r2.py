@@ -17,8 +17,8 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
+from sqlalchemy import text
 from models.base import SessionLocal
-from models.exercise import Exercise
 from services.exercise_media_storage import (
     StorageError,
     is_legacy_static_exercise_url,
@@ -27,6 +27,42 @@ from services.exercise_media_storage import (
 )
 
 MEDIA_COLUMNS = ("image_url", "thumbnail_url", "anatomy_image_url")
+
+
+def detect_exercises_schema(db) -> str:
+    query = text(
+        """
+        SELECT table_schema
+        FROM information_schema.tables
+        WHERE table_name = 'exercises'
+          AND table_schema IN ('training', 'public')
+        ORDER BY CASE WHEN table_schema = 'training' THEN 0 ELSE 1 END
+        LIMIT 1
+        """
+    )
+    schema = db.execute(query).scalar()
+    if not schema:
+        raise RuntimeError("Could not find exercises table in training/public schemas")
+    return schema
+
+
+def detect_media_columns(db, schema: str) -> list[str]:
+    query = text(
+        """
+        SELECT column_name
+        FROM information_schema.columns
+        WHERE table_schema = :schema
+          AND table_name = 'exercises'
+          AND column_name IN ('image_url', 'thumbnail_url', 'anatomy_image_url')
+        ORDER BY CASE column_name
+            WHEN 'image_url' THEN 1
+            WHEN 'thumbnail_url' THEN 2
+            WHEN 'anatomy_image_url' THEN 3
+            ELSE 99
+        END
+        """
+    )
+    return [row[0] for row in db.execute(query, {"schema": schema}).all()]
 
 
 @dataclass
@@ -46,12 +82,29 @@ def migrate(apply_changes: bool) -> MigrationAudit:
     migrated_cache: Dict[str, str] = {}
 
     try:
-        exercises = db.query(Exercise).all()
-        audit.scanned_exercises = len(exercises)
+        exercises_schema = detect_exercises_schema(db)
+        media_columns = detect_media_columns(db, exercises_schema)
 
-        for exercise in exercises:
-            for column in MEDIA_COLUMNS:
-                current_url = getattr(exercise, column)
+        if not media_columns:
+            raise RuntimeError(
+                f"No media columns found in {exercises_schema}.exercises (expected one of {', '.join(MEDIA_COLUMNS)})"
+            )
+
+        select_columns_sql = ", ".join(["id"] + media_columns)
+        rows = db.execute(
+            text(
+                f"""
+                SELECT {select_columns_sql}
+                FROM {exercises_schema}.exercises
+                """
+            )
+        ).mappings().all()
+        audit.scanned_exercises = len(rows)
+
+        for row in rows:
+            exercise_id = str(row["id"])
+            for column in media_columns:
+                current_url = row.get(column)
                 if not is_legacy_static_exercise_url(current_url):
                     continue
 
@@ -61,7 +114,7 @@ def migrate(apply_changes: bool) -> MigrationAudit:
                 if not local_path.exists():
                     audit.missing_files += 1
                     audit.missing_details.append(
-                        f"{exercise.id}::{column} -> missing file {local_path}"
+                        f"{exercise_id}::{column} -> missing file {local_path}"
                     )
                     continue
 
@@ -71,14 +124,14 @@ def migrate(apply_changes: bool) -> MigrationAudit:
                     try:
                         new_url = upload_local_file_to_r2(
                             local_file_path=local_path,
-                            exercise_id=exercise.id,
+                            exercise_id=exercise_id,
                             source_filename=local_path.name,
                         )
                         migrated_cache[current_url] = new_url
                     except StorageError as exc:
                         audit.upload_errors += 1
                         audit.error_details.append(
-                            f"{exercise.id}::{column} -> {exc}"
+                            f"{exercise_id}::{column} -> {exc}"
                         )
                         continue
                 else:
@@ -86,7 +139,16 @@ def migrate(apply_changes: bool) -> MigrationAudit:
                     new_url = f"<R2_UPLOAD:{local_path.name}>"
 
                 if apply_changes:
-                    setattr(exercise, column, new_url)
+                    db.execute(
+                        text(
+                            f"""
+                            UPDATE {exercises_schema}.exercises
+                            SET {column} = :new_url
+                            WHERE id = :exercise_id
+                            """
+                        ),
+                        {"new_url": new_url, "exercise_id": exercise_id},
+                    )
                 audit.updated_urls += 1
 
         if apply_changes:
