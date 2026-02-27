@@ -5,6 +5,7 @@ from datetime import datetime
 from core.dependencies import get_current_user
 from models.base import get_db
 from models.user import User, UserRole
+from repositories.training_compat.types import CompatUserContext
 from services.patient_context import build_patient_context, save_patient_context_snapshot
 from schemas.ai_generator import PatientContext
 
@@ -15,7 +16,7 @@ router = APIRouter()
 def get_patient_context(
     client_id: str,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User | CompatUserContext = Depends(get_current_user)
 ):
     """
     Obtiene un PatientContext construido desde la entrevista y métricas del cliente.
@@ -42,7 +43,7 @@ def create_patient_context_snapshot(
     client_id: str,
     payload: PatientContext,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User | CompatUserContext = Depends(get_current_user)
 ):
     """
     Guarda un snapshot versionado de PatientContext.
@@ -69,7 +70,7 @@ def create_patient_context_snapshot(
 @router.get("/patients/me/context", response_model=PatientContext)
 def get_my_patient_context(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User | CompatUserContext = Depends(get_current_user)
 ):
     """
     Permite que un cliente vea su propio contexto (sin exponer PII a otros).

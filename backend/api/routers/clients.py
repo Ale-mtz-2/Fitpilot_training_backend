@@ -6,6 +6,16 @@ from models.user import User, UserRole
 from schemas.client import ClientCreate, ClientUpdate, ClientResponse, ClientListResponse
 from core.security import get_password_hash
 from core.dependencies import get_current_user
+from core.config import settings
+from repositories.training_compat.types import CompatUserContext
+from repositories.training_compat.users import (
+    create_user as compat_create_user,
+    delete_user as compat_delete_user,
+    get_user_context_by_email,
+    get_user_context_by_id,
+    list_clients as compat_list_clients,
+    update_user_profile as compat_update_user_profile,
+)
 
 router = APIRouter()
 
@@ -16,7 +26,7 @@ def get_clients(
     limit: int = Query(100, ge=1, le=100),
     search: Optional[str] = None,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User | CompatUserContext = Depends(get_current_user)
 ):
     """Get all clients (users with role=client)"""
 
@@ -26,6 +36,15 @@ def get_clients(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Only trainers and admins can view clients"
         )
+
+    if settings.DB_MODE == "training_compat":
+        total, clients = compat_list_clients(
+            db,
+            skip=skip,
+            limit=limit,
+            search=search,
+        )
+        return ClientListResponse(clients=clients, total=total)
 
     query = db.query(User).filter(User.role == UserRole.CLIENT)
 
@@ -46,7 +65,7 @@ def get_clients(
 def create_client(
     client_data: ClientCreate,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User | CompatUserContext = Depends(get_current_user)
 ):
     """Create a new client"""
 
@@ -58,7 +77,10 @@ def create_client(
         )
 
     # Check if email already exists
-    existing_user = db.query(User).filter(User.email == client_data.email).first()
+    if settings.DB_MODE == "training_compat":
+        existing_user = get_user_context_by_email(db, client_data.email)
+    else:
+        existing_user = db.query(User).filter(User.email == client_data.email).first()
     if existing_user:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -67,18 +89,30 @@ def create_client(
 
     # Create new client (user with role=client)
     hashed_password = get_password_hash(client_data.password)
-    new_client = User(
-        email=client_data.email,
-        full_name=client_data.full_name,
-        hashed_password=hashed_password,
-        role=UserRole.CLIENT,
-        is_active=True,
-        is_verified=False
-    )
+    if settings.DB_MODE == "training_compat":
+        new_client = compat_create_user(
+            db,
+            email=client_data.email,
+            password_hash=hashed_password,
+            full_name=client_data.full_name,
+            role=UserRole.CLIENT,
+            is_active=True,
+            is_verified=False,
+        )
+        db.commit()
+    else:
+        new_client = User(
+            email=client_data.email,
+            full_name=client_data.full_name,
+            hashed_password=hashed_password,
+            role=UserRole.CLIENT,
+            is_active=True,
+            is_verified=False
+        )
 
-    db.add(new_client)
-    db.commit()
-    db.refresh(new_client)
+        db.add(new_client)
+        db.commit()
+        db.refresh(new_client)
 
     return new_client
 
@@ -87,7 +121,7 @@ def create_client(
 def get_client(
     client_id: str,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User | CompatUserContext = Depends(get_current_user)
 ):
     """Get a specific client by ID"""
 
@@ -98,10 +132,15 @@ def get_client(
             detail="Only trainers and admins can view clients"
         )
 
-    client = db.query(User).filter(
-        User.id == client_id,
-        User.role == UserRole.CLIENT
-    ).first()
+    if settings.DB_MODE == "training_compat":
+        client = get_user_context_by_id(db, client_id)
+        if client and client.role != UserRole.CLIENT:
+            client = None
+    else:
+        client = db.query(User).filter(
+            User.id == client_id,
+            User.role == UserRole.CLIENT
+        ).first()
 
     if not client:
         raise HTTPException(
@@ -117,7 +156,7 @@ def update_client(
     client_id: str,
     client_data: ClientUpdate,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User | CompatUserContext = Depends(get_current_user)
 ):
     """Update a client's information"""
 
@@ -128,16 +167,36 @@ def update_client(
             detail="Only trainers and admins can update clients"
         )
 
-    client = db.query(User).filter(
-        User.id == client_id,
-        User.role == UserRole.CLIENT
-    ).first()
+    if settings.DB_MODE == "training_compat":
+        client = get_user_context_by_id(db, client_id)
+        if client and client.role != UserRole.CLIENT:
+            client = None
+    else:
+        client = db.query(User).filter(
+            User.id == client_id,
+            User.role == UserRole.CLIENT
+        ).first()
 
     if not client:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Client not found"
         )
+
+    if settings.DB_MODE == "training_compat":
+        updated_client = compat_update_user_profile(
+            db,
+            user_id=client_id,
+            full_name=client_data.full_name,
+            is_active=client_data.is_active,
+        )
+        if not updated_client:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Client not found"
+            )
+        db.commit()
+        return updated_client
 
     # Update fields
     if client_data.full_name is not None:
@@ -155,7 +214,7 @@ def update_client(
 def delete_client(
     client_id: str,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User | CompatUserContext = Depends(get_current_user)
 ):
     """Delete a client"""
 
@@ -166,18 +225,33 @@ def delete_client(
             detail="Only trainers and admins can delete clients"
         )
 
-    client = db.query(User).filter(
-        User.id == client_id,
-        User.role == UserRole.CLIENT
-    ).first()
+    if settings.DB_MODE == "training_compat":
+        client = get_user_context_by_id(db, client_id)
+        if not client or client.role != UserRole.CLIENT:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Client not found"
+            )
+        deleted = compat_delete_user(db, client_id)
+        if not deleted:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Client not found"
+            )
+        db.commit()
+    else:
+        client = db.query(User).filter(
+            User.id == client_id,
+            User.role == UserRole.CLIENT
+        ).first()
 
-    if not client:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Client not found"
-        )
+        if not client:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Client not found"
+            )
 
-    db.delete(client)
-    db.commit()
+        db.delete(client)
+        db.commit()
 
     return None

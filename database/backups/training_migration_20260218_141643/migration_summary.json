@@ -1,0 +1,15 @@
+{
+  "started_at": "2026-02-18T20:16:43.952934+00:00",
+  "finished_at": "2026-02-18T20:16:44.414686+00:00",
+  "status": "failed",
+  "notes": [
+    "Freeze training writes during migration window is required.",
+    "Using transaction + table locks for target training tables.",
+    "Migration failed and was rolled back: 0",
+    "Error: 0"
+  ],
+  "users_created": [],
+  "users_reused": [],
+  "counts": {},
+  "validation": {}
+}

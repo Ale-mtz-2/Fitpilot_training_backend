@@ -9,9 +9,14 @@ from datetime import datetime
 from uuid import uuid4
 from sqlalchemy.orm import Session
 
+from core.config import settings
 from models.client_interview import ClientInterview
 from models.client_metric import ClientMetric, MetricType
 from models.patient_context import PatientContextSnapshot
+from repositories.training_compat.patient_context import (
+    build_patient_context as compat_build_patient_context,
+    save_patient_context_snapshot as compat_save_patient_context_snapshot,
+)
 from schemas.ai_generator import (
     PatientContext,
     PatientIdentity,
@@ -86,6 +91,9 @@ def build_patient_context(db: Session, client_id: str) -> Optional[PatientContex
     Si no existe snapshot, lo construye desde entrevista + métricas.
     Retorna None si no hay datos disponibles.
     """
+    if settings.DB_MODE == "training_compat":
+        return compat_build_patient_context(db, client_id)
+
     # 1) Intentar snapshot persistido
     snapshot = (
         db.query(PatientContextSnapshot)
@@ -167,6 +175,16 @@ def save_patient_context_snapshot(
     """
     Persiste un snapshot de PatientContext para trazabilidad/versionado.
     """
+    if settings.DB_MODE == "training_compat":
+        return compat_save_patient_context_snapshot(
+            db=db,
+            client_id=client_id,
+            data=data,
+            created_by=created_by,
+            source=source,
+            effective_at=effective_at,
+        )
+
     version = str(uuid4())
     effective = effective_at or datetime.utcnow()
     snapshot = PatientContextSnapshot(

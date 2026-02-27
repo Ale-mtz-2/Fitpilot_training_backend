@@ -1,0 +1,34 @@
+Searching for Yahir...
+Found Yahir: ID=231ed91b-0207-41e4-a741-3b396a84ef3e, Name=Yahir Leal Zamago
+
+--- Interview Data ---
+Goal: PrimaryGoal.HYPERTROPHY
+Experience: ExperienceLevel.INTERMEDIATE
+Days/Week: 4
+Session Duration: 120 min
+Equipment: ['bodyweight', 'barbell', 'dumbbells', 'machines', 'cables', 'pull_up_bar', 'bench', 'squat_rack']
+Injuries: ['Ninguna']
+Target Muscles: []
+Excluded Exercises: ['No']
+
+--- Available Exercises Sample ---
+ID: 93523bc4-42be-47da-8286-fb628887bf5f, Name: Press de Banca Plano con Barra / Flat Barbell Bench Press, Class: ExerciseClass.STRENGTH
+ID: 05c07fc6-9f1b-4177-8586-5131cbbf7dcc, Name: Press de Banca Inclinado con Barra / Incline Barbell Bench Press, Class: ExerciseClass.STRENGTH
+ID: acc5f43d-ecdc-46c9-bde8-3f2979199e80, Name: Aperturas con Mancuernas / Dumbbell Fly, Class: ExerciseClass.STRENGTH
+ID: 48fcbc48-db8b-428c-9f1b-086b659c1d87, Name: Cruce de Poleas / Cable Crossover, Class: ExerciseClass.STRENGTH
+ID: ac69990d-a46b-4eba-81a3-86a0992622dd, Name: Máquina Pec Deck / Pec Deck Machine, Class: ExerciseClass.STRENGTH
+ID: 1c4009ee-4fda-4994-84ad-4701242821f4, Name: Flexiones / Push-ups, Class: ExerciseClass.STRENGTH
+ID: e296fac2-b7c9-40ea-b657-f9861b6ec70f, Name: Pullover con Mancuerna / Dumbbell Pullover, Class: ExerciseClass.STRENGTH
+ID: 0c1ca425-2019-483f-963b-143fd74d49ae, Name: Cruce de Poleas Alto a Bajo / High to Low Cable Fly, Class: ExerciseClass.STRENGTH
+ID: 04c1ff1d-7b26-4943-9911-4bf31fe2c8b6, Name: Flexiones Agarre Cerrado / Close Grip Push-ups, Class: ExerciseClass.STRENGTH
+ID: f7579300-0e09-446e-b2fe-c26a5bc8d5c7, Name: Press de Banca en Máquina Smith / Smith Machine Bench Press, Class: ExerciseClass.STRENGTH
+ID: 8d2e790f-19fb-4951-b365-d8a5015c8295, Name: Press Declinado con Mancuernas / Decline Dumbbell Press, Class: ExerciseClass.STRENGTH
+ID: 6639b4e0-8f09-44d5-8077-73e29b4cfa6d, Name: Flexiones Agarre Ancho / Wide Grip Push-ups, Class: ExerciseClass.STRENGTH
+ID: 61144002-0b86-4cec-bcce-84f185fac9a3, Name: Máquina de Aperturas / Machine Fly, Class: ExerciseClass.STRENGTH
+ID: 81addbb4-c1b9-4a36-9cfd-dfd607f96036, Name: Press Svend / Svend Press, Class: ExerciseClass.STRENGTH
+ID: f884891b-550e-46db-bb76-d5e2709e075c, Name: Dominadas / Pull-ups, Class: ExerciseClass.STRENGTH
+ID: a9b7100d-33af-47f3-bb90-1921af186225, Name: Jalón al Pecho Agarre Ancho / Wide Grip Lat Pulldown, Class: ExerciseClass.STRENGTH
+ID: 9a4ff421-a8a4-4a47-8cd8-b3e47593c9eb, Name: Remo con Barra / Barbell Row, Class: ExerciseClass.STRENGTH
+ID: e6ed8a59-9ca0-46d8-9c4d-f5dc92b5b463, Name: Remo con Mancuerna / Dumbbell Row, Class: ExerciseClass.STRENGTH
+ID: 1aa24acf-9fa5-498c-910b-78358dfaf362, Name: Aperturas Inclinadas con Mancuernas / Incline Dumbbell Fly, Class: ExerciseClass.STRENGTH
+ID: 2b384748-2af0-4941-88fe-2a589bd3aeb4, Name: Remo Sentado en Polea / Seated Cable Row, Class: ExerciseClass.STRENGTH

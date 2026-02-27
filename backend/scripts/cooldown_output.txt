@@ -1,0 +1,49 @@
+﻿============================================================
+  Adding Cooldown Exercises (ElÝptica)
+============================================================
+  Torso A: Added ElÝptica cooldown (order 8, ID: 5531e705-9cd3-42e8-b36b-17c2c3a0d789)
+  Pierna A: Added ElÝptica cooldown (order 7, ID: 102b0260-c251-444c-8097-70c2ce1c4872)
+  Torso B: Added ElÝptica cooldown (order 8, ID: 5a15cdc0-3126-4725-8794-436f38f0c0b4)
+  Pierna B: Added ElÝptica cooldown (order 6, ID: b0bfcb7c-2661-4dae-8a7f-0a2b3976f957)
+
+  ALL COOLDOWN EXERCISES ADDED SUCCESSFULLY
+
+--- Final Structure ---
+
+  Torso A:
+    [warmup] 0. CÝrculos de Brazos: 2x15-15
+    [main] 2. Press de Banca Inclinado con Barra: 3x6-8
+    [main] 3. Remo con Barra: 3x8-10
+    [main] 4. Press Militar: 3x8-10
+    [main] 5. Jal¾n al Pecho Agarre Ancho: 3x10-12
+    [main] 6. Elevaci¾n Lateral en Polea: 2x12-15
+    [main] 7. Extensi¾n de TrÝceps con V-Bar: 2x10-12
+    [cooldown] 8. ElÝptica: 1x300s
+
+  Pierna A:
+    [warmup] 0. Balanceo de Piernas: 2x15-15
+    [main] 2. Sentadilla Trasera: 3x6-8
+    [main] 3. Peso Muerto Rumano: 3x8-10
+    [main] 4. Prensa de Pierna: 3x10-12
+    [main] 5. Curl de Pierna Sentado: 3x12-15
+    [main] 6. Elevaci¾n de Talones de Pie: 3x15-20
+    [cooldown] 7. ElÝptica: 1x300s
+
+  Torso B:
+    [warmup] 0. Separaci¾n de Banda: 2x15-15
+    [main] 2. Remo con Apoyo de Pecho: 3x8-10
+    [main] 3. Press Inclinado con Mancuernas: 3x8-10
+    [main] 4. Tir¾n Facial con Cable: 3x15-20
+    [main] 5. Cruce de Poleas Alto a Bajo: 2x12-15
+    [main] 6. Curl Martillo Cruzado: 2x10-12
+    [main] 7. Extensi¾n de TrÝceps sobre Cabeza: 2x10-12
+    [cooldown] 8. ElÝptica: 1x300s
+
+  Pierna B:
+    [warmup] 0. CÝrculos de Cadera: 2x15-15
+    [main] 1. Peso Muerto: 3x5-6
+    [main] 2. Empuje de Cadera con Barra: 3x8-12
+    [main] 3. Sentadilla B·lgara: 3x8-10
+    [main] 4. Extensi¾n de Pierna: 3x12-15
+    [main] 5. Elevaci¾n de Talones en Prensa: 3x15-20
+    [cooldown] 6. ElÝptica: 1x300s

@@ -1,0 +1,19 @@
+
+--- USERS ---
+ID: 231ed91b-0207-41e4-a741-3b396a84ef3e | Name: Yahir Leal Zamago | Email: yair.leal@hotmail.com | Role: UserRole.CLIENT
+ID: e4244715-20b9-4103-beca-6da91ce89338 | Name: Carlos Rodriguez | Email: trainer1@fitpilot.com | Role: UserRole.TRAINER
+ID: 8ad0f894-092e-448c-bc57-15cced818d58 | Name: Maria Garcia | Email: trainer2@fitpilot.com | Role: UserRole.TRAINER
+ID: b0245a5f-7e07-4e27-85d7-1c1cccc0f879 | Name: Juan Perez | Email: client1@fitpilot.com | Role: UserRole.CLIENT
+ID: 5bb507ce-5090-4466-8296-7ebbb695ba20 | Name: Ana Martinez | Email: client2@fitpilot.com | Role: UserRole.CLIENT
+ID: 6a64e807-0bc6-4248-aec1-55015b2e6b4e | Name: Luis Sanchez | Email: client3@fitpilot.com | Role: UserRole.CLIENT
+ID: 2943c951-31ca-472f-bc1e-64b09bd580f2 | Name: Admin User | Email: admin@fitpilot.com | Role: UserRole.ADMIN
+ID: d9db0550-0b04-45cd-b3ed-92ecea0fe11c | Name: Yubana Brahams Lorenzo | Email: yubbi2629@gmail.com | Role: UserRole.CLIENT
+ID: ca37fdfa-a6ce-4a8f-a904-1a19bb3de92c | Name: Itzel Britney Rodríguez Brahams | Email: Itzy2908@hotmail.com | Role: UserRole.CLIENT
+
+--- YAHIR'S MACROCYCLE ---
+Macro ID: 66582a89-3b48-458e-a7c4-3deba4be68fd
+Name: Plan Hipertrofia 2024
+Status: MesocycleStatus.ACTIVE
+Client ID: 231ed91b-0207-41e4-a741-3b396a84ef3e
+Trainer ID: 2943c951-31ca-472f-bc1e-64b09bd580f2
+Created By: Admin User (admin@fitpilot.com) Role: UserRole.ADMIN

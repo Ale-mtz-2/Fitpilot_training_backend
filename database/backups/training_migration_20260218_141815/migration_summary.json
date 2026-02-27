@@ -1,0 +1,178 @@
+{
+  "started_at": "2026-02-18T20:18:15.828954+00:00",
+  "finished_at": "2026-02-18T20:20:15.444219+00:00",
+  "status": "apply_ok",
+  "notes": [
+    "Freeze training writes during migration window is required.",
+    "Using transaction + table locks for target training tables."
+  ],
+  "users_created": [
+    {
+      "source_user_id": "231ed91b-0207-41e4-a741-3b396a84ef3e",
+      "target_user_id": 41,
+      "email": "yair.leal@hotmail.com"
+    },
+    {
+      "source_user_id": "7a9871c1-1d53-47de-b79c-e5b0a3902ad9",
+      "target_user_id": 42,
+      "email": "yolanda_saeb@hotmail.com"
+    },
+    {
+      "source_user_id": "2943c951-31ca-472f-bc1e-64b09bd580f2",
+      "target_user_id": 43,
+      "email": "admin@fitpilot.com"
+    },
+    {
+      "source_user_id": "e4244715-20b9-4103-beca-6da91ce89338",
+      "target_user_id": 44,
+      "email": "trainer1@fitpilot.com"
+    },
+    {
+      "source_user_id": "8ad0f894-092e-448c-bc57-15cced818d58",
+      "target_user_id": 45,
+      "email": "trainer2@fitpilot.com"
+    },
+    {
+      "source_user_id": "b0245a5f-7e07-4e27-85d7-1c1cccc0f879",
+      "target_user_id": 46,
+      "email": "client1@fitpilot.com"
+    },
+    {
+      "source_user_id": "5bb507ce-5090-4466-8296-7ebbb695ba20",
+      "target_user_id": 47,
+      "email": "client2@fitpilot.com"
+    },
+    {
+      "source_user_id": "6a64e807-0bc6-4248-aec1-55015b2e6b4e",
+      "target_user_id": 48,
+      "email": "client3@fitpilot.com"
+    },
+    {
+      "source_user_id": "d9db0550-0b04-45cd-b3ed-92ecea0fe11c",
+      "target_user_id": 49,
+      "email": "yubbi2629@gmail.com"
+    },
+    {
+      "source_user_id": "ca37fdfa-a6ce-4a8f-a904-1a19bb3de92c",
+      "target_user_id": 50,
+      "email": "Itzy2908@hotmail.com"
+    }
+  ],
+  "users_reused": [],
+  "counts": {
+    "source": {
+      "muscles": 18,
+      "exercises": 232,
+      "exercise_muscles": 527,
+      "macrocycles": 5,
+      "mesocycles": 6,
+      "microcycles": 13,
+      "training_days": 68,
+      "day_exercises": 519,
+      "workout_logs": 33,
+      "exercise_set_logs": 137,
+      "client_interviews": 4,
+      "client_metrics": 4,
+      "patient_context_snapshots": 0
+    },
+    "target_before": {
+      "muscles": 4,
+      "exercises": 0,
+      "exercise_muscles": 0,
+      "macrocycles": 0,
+      "mesocycles": 0,
+      "microcycles": 0,
+      "training_days": 0,
+      "day_exercises": 0,
+      "workout_logs": 0,
+      "exercise_set_logs": 0,
+      "client_interviews": 0,
+      "client_metrics": 0,
+      "patient_context_snapshots": 0
+    },
+    "target": {
+      "muscles": 18,
+      "exercises": 232,
+      "exercise_muscles": 527,
+      "macrocycles": 5,
+      "mesocycles": 6,
+      "microcycles": 13,
+      "training_days": 68,
+      "day_exercises": 519,
+      "workout_logs": 33,
+      "exercise_set_logs": 137,
+      "client_interviews": 4,
+      "client_metrics": 4,
+      "patient_context_snapshots": 0
+    }
+  },
+  "validation": {
+    "count_mismatches": {},
+    "client_interviews_client_fk": 0,
+    "workout_logs_client_fk": 0,
+    "macrocycles_trainer_fk": 0,
+    "macrocycles_client_fk": 0,
+    "client_metrics_client_fk": 0,
+    "patient_context_client_fk": 0,
+    "patient_context_created_by_fk": 0,
+    "sample_macrocycle_chain": [
+      {
+        "macrocycle_id": 1,
+        "name": "Programa Recomposición Corporal - Itzel",
+        "day_exercises": 372
+      },
+      {
+        "macrocycle_id": 2,
+        "name": "Programa Glúteos y Fat Loss - Yubana",
+        "day_exercises": 56
+      },
+      {
+        "macrocycle_id": 3,
+        "name": "Plan Hipertrofia",
+        "day_exercises": 32
+      },
+      {
+        "macrocycle_id": 4,
+        "name": "Glute Focus Hypertrophy",
+        "day_exercises": 20
+      },
+      {
+        "macrocycle_id": 5,
+        "name": "Glute Focus Hypertrophy",
+        "day_exercises": 39
+      }
+    ],
+    "sample_workout_logs": [
+      {
+        "workout_log_id": 1,
+        "status": "completed",
+        "client_id": 50,
+        "set_rows": 24
+      },
+      {
+        "workout_log_id": 2,
+        "status": "abandoned",
+        "client_id": 50,
+        "set_rows": 0
+      },
+      {
+        "workout_log_id": 3,
+        "status": "abandoned",
+        "client_id": 50,
+        "set_rows": 15
+      },
+      {
+        "workout_log_id": 4,
+        "status": "abandoned",
+        "client_id": 50,
+        "set_rows": 5
+      },
+      {
+        "workout_log_id": 5,
+        "status": "abandoned",
+        "client_id": 50,
+        "set_rows": 2
+      }
+    ]
+  }
+}

@@ -1,4 +1,4 @@
-# 🏋️ Fit Pilot - Guía de Desarrollo con IA CLI
+# 🏋️ FitPilot - Guía de Desarrollo con IA CLI
 
 ## 📋 Índice
 1. [Visión General del Proyecto](#visión-general-del-proyecto)
@@ -86,7 +86,7 @@ mkdir -p .github/workflows
 
 ```bash
 git init
-echo "# Fit Pilot" > README.md
+echo "# FitPilot" > README.md
 
 # Crear .gitignore
 cat > .gitignore << 'EOF'
@@ -243,7 +243,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.routers import auth, exercises, routines, ai_generator
 
-app = FastAPI(title="Fit Pilot API", version="1.0.0")
+app = FastAPI(title="FitPilot API", version="1.0.0")
 
 # CORS configuration
 app.add_middleware(
@@ -262,7 +262,7 @@ app.include_router(ai_generator.router, prefix="/api/ai", tags=["ai"])
 
 @app.get("/")
 def read_root():
-    return {"message": "Fit Pilot API"}
+    return {"message": "FitPilot API"}
 EOF
 ```
 
@@ -281,6 +281,90 @@ alembic upgrade head
 ```
 
 ## 🎨 Desarrollo del Frontend
+
+### Interfaz Kanban para Microciclos de Entrenamiento
+
+La interfaz principal para editar rutinas utiliza un tablero estilo Kanban que permite una gestión visual e intuitiva de los ejercicios.
+
+#### Estructura Visual
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│  Week 4: Glute Specialization                                          [Edit]  │
+├──────────────────┬──────────────────────────────────────────────────────────────┤
+│                  │                                                              │
+│  EJERCICIOS      │   Day 1          Day 2          Day 3          Day 4        │
+│  ────────────    │   ──────         ──────         ──────         ──────       │
+│  [🔍 Buscar]     │   Upper Body     Lower Body     Push           Pull         │
+│                  │                                                              │
+│  ┌────────────┐  │   ┌──────────┐   ┌──────────┐   ┌──────────┐                │
+│  │ 🖼️ Imagen  │  │   │ 🖼️       │   │ 🖼️       │   │ 🖼️       │                │
+│  │ Bench      │  │   │ Bench    │   │ Squat    │   │ OHP      │                │
+│  │ Press      │  │   │ 4x8-12   │   │ 5x5      │   │ 3x10     │                │
+│  └────────────┘  │   └──────────┘   └──────────┘   └──────────┘                │
+│                  │                                                              │
+│  ┌────────────┐  │   ┌──────────┐   ┌──────────┐                               │
+│  │ 🖼️ Imagen  │  │   │ 🖼️       │   │ 🖼️       │                               │
+│  │ Squat      │  │   │ Rows     │   │ RDL      │   + Add Day                   │
+│  └────────────┘  │   │ 4x10     │   │ 3x12     │                               │
+│                  │   └──────────┘   └──────────┘                               │
+│  ┌────────────┐  │                                                              │
+│  │ 🖼️ Imagen  │  │   ┌──────────────────────────────────────┐                  │
+│  │ Deadlift   │  │   │  Drop exercise here                  │                  │
+│  └────────────┘  │   └──────────────────────────────────────┘                  │
+│                  │                                                              │
+└──────────────────┴──────────────────────────────────────────────────────────────┘
+```
+
+#### Componentes del Sistema Kanban
+
+| Componente | Descripción | Props Principales |
+|------------|-------------|-------------------|
+| `MicrocycleKanbanBoard` | Tablero principal con panel de ejercicios y columnas de días | `microcycle`, `trainingDays`, `exercises` |
+| `ExerciseLibraryPanel` | Panel lateral con ejercicios arrastrables (thumbnails) | `exercises`, `filters`, `onDragStart` |
+| `DayColumn` | Columna droppable representando un día de entrenamiento | `trainingDay`, `exercises`, `onDrop` |
+| `KanbanExerciseCard` | Card de ejercicio con imagen y configuración resumida | `dayExercise`, `exercise`, `onClick` |
+| `ExerciseConfigModal` | Modal para configurar sets, reps, tempo, etc. | `dayExercise`, `onSave`, `onDelete` |
+
+#### Flujo de Usuario
+
+1. **Arrastrar Ejercicio**: Usuario arrastra un ejercicio desde el panel izquierdo hacia una columna de día
+2. **Crear DayExercise**: Se crea automáticamente con valores por defecto (3x10, 60s rest, RIR 2)
+3. **Configurar Ejercicio**: Click en el ejercicio abre modal para editar especificaciones
+4. **Reordenar**: Arrastrar ejercicios dentro de la misma columna para cambiar orden
+5. **Mover Entre Días**: Arrastrar ejercicio de una columna a otra
+
+#### Tipos de Drag & Drop
+
+```typescript
+// Tipos de operaciones drag & drop soportadas
+type DragOperation =
+  | 'library-to-day'      // Desde panel de ejercicios a columna de día
+  | 'reorder-within-day'  // Reordenar dentro del mismo día
+  | 'move-between-days';  // Mover de un día a otro
+
+// Identificadores de droppables
+const droppableIds = {
+  day: `day-${trainingDay.id}`,        // Columna de día
+  exercise: `exercise-${exercise.id}`, // Ejercicio (para reordenar)
+  library: 'exercise-library'          // Panel de ejercicios (solo draggable)
+};
+```
+
+#### Configuración de Ejercicio (Modal)
+
+```typescript
+interface ExerciseConfig {
+  sets: number;           // Número de series
+  reps_min: number;       // Repeticiones mínimas
+  reps_max: number;       // Repeticiones máximas
+  rest_seconds: number;   // Segundos de descanso
+  tempo?: string;         // Tempo (ej: "3-1-1-0")
+  effort_type: 'RIR' | 'RPE' | 'percentage';
+  effort_value: number;   // Valor del esfuerzo
+  notes?: string;         // Notas adicionales
+}
+```
 
 ### 1. Setup Frontend con React y TypeScript
 
@@ -816,7 +900,7 @@ Usa React 18, TypeScript, @dnd-kit/core, @dnd-kit/sortable, zustand para estado,
 #### 3. Generar Rutina con IA
 
 ```
-Crea una función que use la API de OpenAI GPT-4 para generar rutinas de entrenamiento personalizadas.
+Crea una función que use la API de Claude sonnet 4.5 para generar rutinas de entrenamiento personalizadas.
 
 Input:
 - Perfil del cliente (edad, sexo, experiencia, lesiones)

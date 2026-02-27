@@ -1,0 +1,117 @@
+﻿=== Users matching 'christian' ===
+  ID: 94654cbe-e332-4cc6-ae96-0faf59eee7e8, Name: Christian Alexis Cruz, Email: chris@mail.com, Role: UserRole.CLIENT
+
+=== Macrocycles for Christian Alexis Cruz ===
+
+Macrocycle: Torso-Pierna Hipertrofia (ID: 266f6ad1-e221-4b97-901c-d5b747f936d6)
+  Objective: hypertrophy
+  Status: MesocycleStatus.ACTIVE
+  Dates: 2026-02-23 to 2026-05-18
+
+  Mesocycle Block 1: Bloque 1 - Acumulaci¾n (ID: b19f70ea-34ba-4157-8a42-a99a84c8c00e)
+    Focus: Hypertrophy
+    Dates: 2026-02-23 to 2026-03-23
+
+    Microcycle Week 1: Semana 1 (ID: 8da3e94a-8a69-4d7b-909e-44cd01e1f199)
+      Dates: 2026-02-23 to 2026-03-01
+
+      Day 1: Torso A - ╔nfasis Press (ID: 88a45567-f8d4-4601-b21f-4d17f63a88fb)
+        Date: 2026-02-23, Focus: Pecho, hombro y espalda
+        [main] 1. Press de Banca Inclinado con Barra: 3x6-8, Rest:120s, RIR:2.0
+        [main] 2. Remo con Barra: 3x8-10, Rest:90s, RIR:2.0
+        [main] 3. Press Militar: 3x8-10, Rest:90s, RIR:2.0
+        [main] 4. Jal¾n al Pecho Agarre Ancho: 3x10-12, Rest:75s, RIR:2.0
+        [main] 5. Elevaci¾n Lateral en Polea: 2x12-15, Rest:60s, RIR:1.0
+        [main] 6. Extensi¾n de TrÝceps con V-Bar: 2x10-12, Rest:60s, RIR:1.0
+
+      Day 2: Pierna A - ╔nfasis Sentadilla (ID: 66cc34a2-4b87-4502-a2e1-c48af617d6b5)
+        Date: 2026-02-24, Focus: Cußdriceps y cadena posterior
+        [main] 1. Sentadilla Trasera: 3x6-8, Rest:150s, RIR:2.0
+        [main] 2. Peso Muerto Rumano: 3x8-10, Rest:120s, RIR:2.0
+        [main] 3. Prensa de Pierna: 3x10-12, Rest:90s, RIR:2.0
+        [main] 4. Curl de Pierna Sentado: 3x12-15, Rest:75s, RIR:1.0
+        [main] 5. Elevaci¾n de Talones de Pie: 3x15-20, Rest:60s, RIR:1.0
+
+      Day 4: Torso B - ╔nfasis Pull (ID: 82ce9d38-a1d2-467f-bc62-5419544e78bd)
+        Date: 2026-02-26, Focus: Espalda, pecho y brazos
+        [main] 1. Remo con Apoyo de Pecho: 3x8-10, Rest:180s, RIR:2.0
+        [main] 2. Press Inclinado con Mancuernas: 3x8-10, Rest:90s, RIR:2.0
+        [main] 3. Tir¾n Facial con Cable: 3x15-20, Rest:60s, RIR:1.0
+        [main] 4. Cruce de Poleas Alto a Bajo: 2x12-15, Rest:60s, RIR:1.0
+        [main] 5. Curl Martillo Cruzado: 2x10-12, Rest:60s, RIR:1.0
+        [main] 6. Extensi¾n de TrÝceps sobre Cabeza: 2x10-12, Rest:60s, RIR:1.0
+
+      Day 5: Pierna B - ╔nfasis Bisagra (ID: ed28e37f-d670-4697-ade3-4b6ee66f898a)
+        Date: 2026-02-27, Focus: Cadena posterior y cußdriceps
+        [main] 0. Peso Muerto: 3x5-6, Rest:150s, RIR:2.0
+        [main] 1. Empuje de Cadera con Barra: 3x8-12, Rest:180s, RIR:2.0
+        [main] 2. Sentadilla B·lgara: 3x8-10, Rest:90s, RIR:2.0
+        [main] 3. Extensi¾n de Pierna: 3x12-15, Rest:75s, RIR:1.0
+        [main] 4. Elevaci¾n de Talones en Prensa: 3x15-20, Rest:60s, RIR:1.0
+
+      Day 6: Descanso [REST DAY] (ID: d51df3d3-d69e-43d4-aca3-44c2afc67e4a)
+        Date: 2026-02-28, Focus: Recuperaci¾n
+
+      Day 7: Descanso [REST DAY] (ID: 4d54136e-d9f8-4390-a6df-32c4eae42a3e)
+        Date: 2026-03-01, Focus: Recuperaci¾n
+
+
+=== Exercises with class 'warmup' ===
+  ID: 0e27b27f-1558-48e0-9e09-6a950d63d6f7, Name EN: Arm Circles, Name ES: CÝrculos de Brazos
+  ID: 7027654b-575d-49b8-8e26-e70bc76966b1, Name EN: Leg Swings, Name ES: Balanceo de Piernas
+  ID: f531b3c7-2bb0-4f26-81e0-276d2fc8adaf, Name EN: Inchworm, Name ES: Gusano
+  ID: cbb47703-379e-4d82-8d82-fd27537cdf76, Name EN: Shoulder Dislocates, Name ES: Dislocaciones de Hombro
+  ID: b4a3e27c-a5b3-45ea-9eaa-97bbab6b3e82, Name EN: Wall Angels, Name ES: ┴ngeles en Pared
+  ID: 4eda37b2-1e29-42cc-bd84-fe78bfd4f045, Name EN: A-Skips, Name ES: Skips-A
+  ID: 8fb09fe8-6871-4e1d-b3a7-3dca5e5a6e6e, Name EN: B-Skips, Name ES: Skips-B
+  ID: f89614fb-f6ed-4733-877f-e357906c4925, Name EN: Hip Circles, Name ES: CÝrculos de Cadera
+  ID: 3fb2ab04-137c-44ce-a16b-d4b12c818172, Name EN: Band Pull Apart, Name ES: Separaci¾n de Banda
+
+=== Exercises with class 'mobility' ===
+  ID: ade38363-28c5-43c3-8f9e-711a997b0683, Name EN: World Greatest Stretch, Name ES: El Mejor Estiramiento del Mundo
+  ID: defba1ad-1834-410c-9a1e-6833a42ce87d, Name EN: Foam Rolling Quads, Name ES: Rodillo en Cußdriceps
+  ID: e25515d5-4d65-446d-869e-cfb2cab39ff1, Name EN: Thoracic Spine Rotation, Name ES: Rotaci¾n de Columna Torßcica
+  ID: 13e1a0d1-c18d-47ad-a80e-d2313395e432, Name EN: Hip 90/90 Stretch, Name ES: Estiramiento de Cadera 90/90
+  ID: 659dd679-0b5e-493e-87d3-02b2c6ab4836, Name EN: Couch Stretch, Name ES: Estiramiento de Sofß
+  ID: 8f77ef33-bbb3-40ff-963d-b0d34a12652c, Name EN: Pigeon Stretch, Name ES: Estiramiento de Paloma
+  ID: e578906d-fcfc-400c-80fb-d953c8ad1c05, Name EN: Foam Rolling Back, Name ES: Rodillo en Espalda
+  ID: 2320d84b-4474-4e73-ab89-97eea65e6c5e, Name EN: Foam Rolling IT Band, Name ES: Rodillo en Banda IT
+  ID: 8b90fc50-b3e2-4de3-ba55-2c1e7ba5153b, Name EN: Scorpion Stretch, Name ES: Estiramiento del Escorpi¾n
+  ID: bad51b6d-2654-4c25-b69e-ba9c5f094449, Name EN: Cat-Cow Stretch, Name ES: Estiramiento Gato-Vaca
+  ID: 613bfb65-bfde-474e-8404-ced4adeb323b, Name EN: Frog Stretch, Name ES: Estiramiento de Rana
+
+=== Exercises with 'core' in name or category ===
+  ID: bc6452cb-8d45-471d-8948-a16a5cbf76cd, Name EN: Crunches, Name ES: Abdominales, Class: ExerciseClass.STRENGTH, Category: Crunch
+  ID: 15ec8aab-14c7-4841-9a6b-1ebfb94cbf19, Name EN: Russian Twist, Name ES: Giro Ruso, Class: ExerciseClass.STRENGTH, Category: Rotation
+  ID: be1663cf-6c5a-47cd-b427-0865baaf77e8, Name EN: Bicycle Crunch, Name ES: Crunch Bicicleta, Class: ExerciseClass.STRENGTH, Category: Crunch
+  ID: c03d86b7-2c86-45fe-bbee-5bdc2f7b1fb4, Name EN: Reverse Crunch, Name ES: Crunch Inverso, Class: ExerciseClass.STRENGTH, Category: Crunch
+  ID: cded2f69-f3aa-4414-9898-966bc650e5d6, Name EN: Side Plank, Name ES: Plancha Lateral, Class: ExerciseClass.STRENGTH, Category: Static
+  ID: 0d81f1d5-a132-4b29-9715-763349e49dda, Name EN: Ab Wheel Rollout, Name ES: Rueda Abdominal, Class: ExerciseClass.STRENGTH, Category: Crunch
+  ID: dfb6bdf3-9a78-496c-9eb3-0cb2f91a2182, Name EN: Dead Bug, Name ES: Dead Bug, Class: ExerciseClass.STRENGTH, Category: Static
+  ID: 9052a646-277d-492f-8ef2-2ae99f91cc48, Name EN: Copenhagen Plank, Name ES: Plancha Copenhague, Class: ExerciseClass.STRENGTH, Category: Static
+  ID: fabf8448-ed3b-4b8d-ab28-6f16ff68c416, Name EN: Weighted Plank, Name ES: Plancha con Peso, Class: ExerciseClass.STRENGTH, Category: Static
+  ID: 1b1adef1-d675-4a94-b499-42dc244011c6, Name EN: Cable Crunch, Name ES: Crunch en Polea, Class: ExerciseClass.STRENGTH, Category: Crunch
+  ID: d483a4b4-9b78-4135-ae09-348de96db487, Name EN: Plank, Name ES: Plancha, Class: ExerciseClass.STRENGTH, Category: Static
+
+=== Exercises with class 'cardio' ===
+  ID: e796d58b-b6a3-4ed3-9522-af85490f93e9, Name EN: Treadmill Running, Name ES: Correr en Cinta, Subclass: CardioSubclass.MISS
+  ID: 8bc71e2d-19b9-48b0-ba33-9494749eef8a, Name EN: Stationary Bike, Name ES: Bicicleta Estßtica, Subclass: CardioSubclass.LISS
+  ID: 01a58ace-ecbd-4e07-85e9-dd9d92025374, Name EN: Rowing Machine, Name ES: Mßquina de Remo, Subclass: CardioSubclass.MISS
+  ID: 18f621cb-7f79-4a95-9fa4-4067bfa5a1f9, Name EN: Elliptical, Name ES: ElÝptica, Subclass: CardioSubclass.LISS
+  ID: 0f09b024-96e5-4838-87cb-32cb794a385b, Name EN: Battle Ropes, Name ES: Cuerdas de Batalla, Subclass: CardioSubclass.HIIT
+  ID: 86ad9163-4c2f-4b35-aa08-805e0bb86a72, Name EN: Burpees, Name ES: Burpees, Subclass: CardioSubclass.HIIT
+  ID: 9df5a698-50c3-4db0-a63b-b3a848d73734, Name EN: Jumping Jacks, Name ES: Saltos de Tijera, Subclass: CardioSubclass.HIIT
+  ID: c052c480-7488-41e7-83c1-13b3772f2250, Name EN: Mountain Climbers, Name ES: Escaladores, Subclass: CardioSubclass.HIIT
+  ID: ec99a632-2f73-47f0-8a1e-2ec9c1885549, Name EN: Jump Rope, Name ES: Saltar la Cuerda, Subclass: CardioSubclass.MISS
+  ID: acd5f253-ce68-4269-b9c0-6f95656b13c9, Name EN: Assault Bike, Name ES: Bicicleta Assault, Subclass: CardioSubclass.HIIT
+
+=== Exercises with class 'conditioning' ===
+  ID: e867589b-ceca-4d3d-b2e5-f23f44d2d22d, Name EN: Kettlebell Swing, Name ES: Swing con Kettlebell
+  ID: 8059bab2-c321-4408-a8c9-dc4048c7ee37, Name EN: Thrusters, Name ES: Thrusters
+  ID: 92646e7f-1247-465a-944d-2f37f81564a0, Name EN: Medicine Ball Slam, Name ES: Slam de Bal¾n Medicinal
+  ID: 1d371fc9-8617-4557-b323-d7b9b700c472, Name EN: Medicine Ball Throw, Name ES: Lanzamiento de Bal¾n Medicinal
+  ID: 09e504a3-2524-48df-899a-0d0ed4a5a358, Name EN: Wall Ball, Name ES: Wall Ball
+  ID: 85cbe2d0-c7f9-407a-8b4f-1e7bad47594f, Name EN: Farmers Walk, Name ES: Caminata del Granjero
+  ID: 44454387-8369-448f-a7e2-54d503773ce0, Name EN: Turkish Get Up, Name ES: Levantamiento Turco
+
+=== Exercises with class 'flexibility' ===

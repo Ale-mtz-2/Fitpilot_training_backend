@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from typing import Optional
+from typing import Optional, Literal
 
 
 class Settings(BaseSettings):
@@ -7,6 +7,9 @@ class Settings(BaseSettings):
 
     # Database
     DATABASE_URL: str = "postgresql://user:password@localhost:5432/fitpilot_db"
+    DB_MODE: Literal["legacy", "training_compat"] = "legacy"
+    TRAINING_SCHEMA: str = "training"
+    PUBLIC_SCHEMA: str = "public"
     REDIS_URL: str = "redis://localhost:6379"
 
     # API Keys

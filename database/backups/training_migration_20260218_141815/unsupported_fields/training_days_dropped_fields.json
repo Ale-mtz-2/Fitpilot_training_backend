@@ -1,0 +1,546 @@
+[
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441011",
+    "date": "2025-12-02",
+    "focus": "Glúteos, Isquiotibiales",
+    "notes": null,
+    "created_at": "2025-11-29T22:23:52.789118",
+    "updated_at": "2025-11-29T22:23:52.789118"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441012",
+    "date": "2025-12-03",
+    "focus": "Pecho, Hombros, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:23:52.789118",
+    "updated_at": "2025-11-29T22:23:52.789118"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441013",
+    "date": "2025-12-04",
+    "focus": "Cuádriceps, Glúteos",
+    "notes": null,
+    "created_at": "2025-11-29T22:23:52.789118",
+    "updated_at": "2025-11-29T22:23:52.789118"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441014",
+    "date": "2025-12-05",
+    "focus": "Espalda, Bíceps, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:23:52.789118",
+    "updated_at": "2025-11-29T22:23:52.789118"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441015",
+    "date": "2025-12-06",
+    "focus": "Glúteos, Core",
+    "notes": null,
+    "created_at": "2025-11-29T22:23:52.789118",
+    "updated_at": "2025-11-29T22:23:52.789118"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441021",
+    "date": "2025-12-09",
+    "focus": "Glúteos, Isquiotibiales",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441022",
+    "date": "2025-12-10",
+    "focus": "Pecho, Hombros, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441023",
+    "date": "2025-12-11",
+    "focus": "Cuádriceps, Glúteos",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441024",
+    "date": "2025-12-12",
+    "focus": "Espalda, Bíceps, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441025",
+    "date": "2025-12-13",
+    "focus": "Glúteos, Core",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441031",
+    "date": "2025-12-16",
+    "focus": "Glúteos, Isquiotibiales",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441032",
+    "date": "2025-12-17",
+    "focus": "Pecho, Hombros, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441033",
+    "date": "2025-12-18",
+    "focus": "Cuádriceps, Glúteos",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441034",
+    "date": "2025-12-19",
+    "focus": "Espalda, Bíceps, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441035",
+    "date": "2025-12-20",
+    "focus": "Glúteos, Core",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441041",
+    "date": "2025-12-23",
+    "focus": "Glúteos, Isquiotibiales",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441042",
+    "date": "2025-12-24",
+    "focus": "Pecho, Hombros, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441043",
+    "date": "2025-12-25",
+    "focus": "Cuádriceps, Glúteos",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441044",
+    "date": "2025-12-26",
+    "focus": "Espalda, Bíceps, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441045",
+    "date": "2025-12-27",
+    "focus": "Glúteos, Core",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:22.697055",
+    "updated_at": "2025-11-29T22:25:22.697055"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441051",
+    "date": "2025-12-30",
+    "focus": "Glúteos, Isquiotibiales",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441052",
+    "date": "2025-12-31",
+    "focus": "Pecho, Hombros, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441053",
+    "date": "2026-01-01",
+    "focus": "Cuádriceps, Glúteos",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441054",
+    "date": "2026-01-02",
+    "focus": "Espalda, Bíceps, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441055",
+    "date": "2026-01-03",
+    "focus": "Glúteos, Core",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441061",
+    "date": "2026-01-06",
+    "focus": "Glúteos, Isquiotibiales",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441062",
+    "date": "2026-01-07",
+    "focus": "Pecho, Hombros, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441063",
+    "date": "2026-01-08",
+    "focus": "Cuádriceps, Glúteos",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441064",
+    "date": "2026-01-09",
+    "focus": "Espalda, Bíceps, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441065",
+    "date": "2026-01-10",
+    "focus": "Glúteos, Core",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441071",
+    "date": "2026-01-13",
+    "focus": "Glúteos, Isquiotibiales",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441072",
+    "date": "2026-01-14",
+    "focus": "Pecho, Hombros, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441073",
+    "date": "2026-01-15",
+    "focus": "Cuádriceps, Glúteos",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441074",
+    "date": "2026-01-16",
+    "focus": "Espalda, Bíceps, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441075",
+    "date": "2026-01-17",
+    "focus": "Glúteos, Core",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441081",
+    "date": "2026-01-20",
+    "focus": "Glúteos, Isquiotibiales",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441082",
+    "date": "2026-01-21",
+    "focus": "Pecho, Hombros, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441083",
+    "date": "2026-01-22",
+    "focus": "Cuádriceps, Glúteos",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441084",
+    "date": "2026-01-23",
+    "focus": "Espalda, Bíceps, Postura",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "550e8400-e29b-41d4-a716-446655441085",
+    "date": "2026-01-24",
+    "focus": "Glúteos, Core",
+    "notes": null,
+    "created_at": "2025-11-29T22:25:40.354152",
+    "updated_at": "2025-11-29T22:25:40.354152"
+  },
+  {
+    "source_id": "ea9581e2-d848-495d-bf0b-b7e7708f634f",
+    "date": "2025-12-09",
+    "focus": "Glúteos y Cadena Posterior",
+    "notes": "Día de enfoque en glúteos con cardio post-entrenamiento",
+    "created_at": "2025-12-05T13:17:09.581461",
+    "updated_at": "2025-12-05T13:17:09.581462"
+  },
+  {
+    "source_id": "d3a3267e-7da8-47f2-a688-6b63c8d0d9c1",
+    "date": "2025-12-13",
+    "focus": "Piernas Completas",
+    "notes": "Día de piernas completas con énfasis en glúteos y cardio extendido",
+    "created_at": "2025-12-05T13:17:09.594129",
+    "updated_at": "2025-12-05T13:17:09.594130"
+  },
+  {
+    "source_id": "7ae61469-78c1-4af6-9b84-5b89dee5103c",
+    "date": "2025-12-10",
+    "focus": "Cuádriceps e Isquiotibiales",
+    "notes": "Día de enfoque en cuádriceps con trabajo de glúteos complementario",
+    "created_at": "2025-12-05T13:17:09.582746",
+    "updated_at": "2025-12-08T20:44:06.873287"
+  },
+  {
+    "source_id": "1413e724-153d-4618-9d90-125710fd321e",
+    "date": "2025-12-11",
+    "focus": "Recuperación y Fat Loss",
+    "notes": "Día de descanso activo con cardio de baja intensidad",
+    "created_at": "2025-12-05T13:17:09.588754",
+    "updated_at": "2025-12-08T22:02:14.020517"
+  },
+  {
+    "source_id": "51940114-1276-49d0-8f3d-221ec70d8254",
+    "date": "2025-12-12",
+    "focus": "Glúteos y Piernas",
+    "notes": "Segundo día enfocado en glúteos de la semana",
+    "created_at": "2025-12-05T13:17:09.592173",
+    "updated_at": "2025-12-08T22:39:29.621312"
+  },
+  {
+    "source_id": "32150047-3d57-456f-bc05-9193188ab3fa",
+    "date": "2025-12-08",
+    "focus": "Torso Fuerza",
+    "notes": null,
+    "created_at": "2025-12-08T23:04:25.441046",
+    "updated_at": "2025-12-08T23:04:25.441048"
+  },
+  {
+    "source_id": "dc2d38c0-0d15-45b8-ad3b-78b882247948",
+    "date": "2025-12-09",
+    "focus": "Pierna Enfasis Sentadilla",
+    "notes": null,
+    "created_at": "2025-12-08T23:04:25.467452",
+    "updated_at": "2025-12-08T23:04:25.467454"
+  },
+  {
+    "source_id": "b65912a8-33bc-460e-8d5b-ce983e2f9275",
+    "date": "2025-12-10",
+    "focus": "Recuperación",
+    "notes": null,
+    "created_at": "2025-12-08T23:04:25.482497",
+    "updated_at": "2025-12-08T23:04:25.482499"
+  },
+  {
+    "source_id": "3a755073-7581-45e8-8846-e43b1b6abd7f",
+    "date": "2025-12-11",
+    "focus": "Torso Hipertrofia",
+    "notes": null,
+    "created_at": "2025-12-08T23:04:25.487123",
+    "updated_at": "2025-12-08T23:04:25.487125"
+  },
+  {
+    "source_id": "5a5e7ca7-e0aa-4dea-b66c-b742c227684a",
+    "date": "2025-12-12",
+    "focus": "Pierna Cadena Posterior",
+    "notes": null,
+    "created_at": "2025-12-08T23:04:25.501348",
+    "updated_at": "2025-12-08T23:04:25.501349"
+  },
+  {
+    "source_id": "d82bddaf-0cb0-4858-822c-83ae56bd4778",
+    "date": "2025-12-13",
+    "focus": "Recuperación",
+    "notes": null,
+    "created_at": "2025-12-08T23:04:25.516398",
+    "updated_at": "2025-12-08T23:04:25.516399"
+  },
+  {
+    "source_id": "ede18304-d400-4553-b60d-04911f2b1628",
+    "date": "2025-12-14",
+    "focus": "Recuperación",
+    "notes": null,
+    "created_at": "2025-12-08T23:04:25.521001",
+    "updated_at": "2025-12-08T23:04:25.521002"
+  },
+  {
+    "source_id": "98929c07-4cf9-4054-9d8e-c48aa109d78e",
+    "date": "2025-12-10",
+    "focus": "Posterior Chain",
+    "notes": null,
+    "created_at": "2025-12-10T20:44:13.516633",
+    "updated_at": "2025-12-10T20:44:13.516634"
+  },
+  {
+    "source_id": "8e54a7ba-d468-415b-a935-66a37617b96c",
+    "date": "2025-12-11",
+    "focus": "Upper Body Push",
+    "notes": null,
+    "created_at": "2025-12-10T20:44:13.536162",
+    "updated_at": "2025-12-10T20:44:13.536164"
+  },
+  {
+    "source_id": "a58cbd75-6219-4d7b-96ba-f2fd91195808",
+    "date": "2025-12-12",
+    "focus": "Legs Anterior",
+    "notes": null,
+    "created_at": "2025-12-10T20:44:13.550567",
+    "updated_at": "2025-12-10T20:44:13.550569"
+  },
+  {
+    "source_id": "01165262-34df-4a4a-9106-55d40317f7ce",
+    "date": "2025-12-13",
+    "focus": "Upper Body Pull",
+    "notes": null,
+    "created_at": "2025-12-10T20:44:13.562296",
+    "updated_at": "2025-12-10T20:44:13.562297"
+  },
+  {
+    "source_id": "f475b815-e77e-4b41-8660-35184bf204a9",
+    "date": "2025-12-11",
+    "focus": "Gluteos e isquios (fuerza)",
+    "notes": "Priorizar ejecucion; evitar fatiga lumbar duplicada.",
+    "created_at": "2025-12-11T13:55:48.702935",
+    "updated_at": "2025-12-11T13:55:48.702937"
+  },
+  {
+    "source_id": "52c4f6d1-d030-4fa1-b939-f8ef4f630526",
+    "date": "2025-12-12",
+    "focus": "Hombro, pecho y core",
+    "notes": "Pulso controlado y estabilidad escapular.",
+    "created_at": "2025-12-11T13:55:48.730686",
+    "updated_at": "2025-12-11T13:55:48.730688"
+  },
+  {
+    "source_id": "b572807a-9107-45a9-8753-f9bf8464d7db",
+    "date": "2025-12-13",
+    "focus": "Recuperacion",
+    "notes": "Paseo 20-30 min + respiracion diafragmatica.",
+    "created_at": "2025-12-11T13:55:48.756028",
+    "updated_at": "2025-12-11T13:55:48.756031"
+  },
+  {
+    "source_id": "730d2563-63df-456f-bb22-23b5119c4448",
+    "date": "2025-12-14",
+    "focus": "Cuadriceps y gluteos",
+    "notes": "Reducir carga de rodilla agregando patrones de cadera y unilateral.",
+    "created_at": "2025-12-11T13:55:48.803342",
+    "updated_at": "2025-12-11T13:55:48.803345"
+  },
+  {
+    "source_id": "c81d2891-5832-43fb-9681-f493e35f8081",
+    "date": "2025-12-15",
+    "focus": "Recuperacion",
+    "notes": "Sueno y nutricion. Estiramientos suaves opcionales.",
+    "created_at": "2025-12-11T13:55:48.819158",
+    "updated_at": "2025-12-11T13:55:48.819160"
+  },
+  {
+    "source_id": "13f6d75d-d8be-4953-92ce-df150be3df6c",
+    "date": "2025-12-16",
+    "focus": "Pull y estabilidad",
+    "notes": "Control escapular y trabajo horizontal extra.",
+    "created_at": "2025-12-11T13:55:48.827182",
+    "updated_at": "2025-12-11T13:55:48.827185"
+  },
+  {
+    "source_id": "30cd33d4-c86b-4e4d-93ce-117d1b184b27",
+    "date": "2025-12-17",
+    "focus": "Recuperacion",
+    "notes": "Paseo 20-30 min + respiracion diafragmatica.",
+    "created_at": "2025-12-11T13:55:48.845832",
+    "updated_at": "2025-12-11T13:55:48.845835"
+  },
+  {
+    "source_id": "453f8f52-9df5-4e75-a11d-d01642f5f9bc",
+    "date": "2025-12-16",
+    "focus": "Glúteos y Cadena Posterior",
+    "notes": "Día de enfoque en glúteos con cardio post-entrenamiento",
+    "created_at": "2025-12-28T00:43:52.868283",
+    "updated_at": "2025-12-28T00:43:52.868287"
+  },
+  {
+    "source_id": "5774d0f1-9e9b-427d-97cc-81275df3b619",
+    "date": "2025-12-17",
+    "focus": "Cuádriceps e Isquiotibiales",
+    "notes": "Día de enfoque en cuádriceps con trabajo de glúteos complementario",
+    "created_at": "2025-12-28T00:43:54.058125",
+    "updated_at": "2025-12-28T00:43:54.058128"
+  },
+  {
+    "source_id": "e27a2dcc-febc-44fa-b59f-1ae71096523a",
+    "date": "2025-12-18",
+    "focus": "Recuperación y Fat Loss",
+    "notes": "Día de descanso activo con cardio de baja intensidad",
+    "created_at": "2025-12-28T00:43:55.038984",
+    "updated_at": "2025-12-28T00:43:55.038986"
+  },
+  {
+    "source_id": "61b2a1ec-c656-4f27-9451-f1c14a66939e",
+    "date": "2025-12-19",
+    "focus": "Glúteos y Piernas",
+    "notes": "Segundo día enfocado en glúteos de la semana",
+    "created_at": "2025-12-28T00:43:55.612657",
+    "updated_at": "2025-12-28T00:43:55.612659"
+  },
+  {
+    "source_id": "35383219-12fc-4c29-9a61-453a9cd2966b",
+    "date": "2025-12-20",
+    "focus": "Piernas Completas",
+    "notes": "Día de piernas completas con énfasis en glúteos y cardio extendido",
+    "created_at": "2025-12-28T00:43:56.527653",
+    "updated_at": "2025-12-28T00:43:56.527656"
+  }
+]

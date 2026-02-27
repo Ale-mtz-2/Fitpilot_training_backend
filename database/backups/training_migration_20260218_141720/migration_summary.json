@@ -1,0 +1,54 @@
+{
+  "started_at": "2026-02-18T20:17:20.152601+00:00",
+  "finished_at": "2026-02-18T20:17:23.396084+00:00",
+  "status": "dry_run_ok",
+  "notes": [
+    "Freeze training writes during migration window is required.",
+    "Using transaction + table locks for target training tables.",
+    "Dry-run only: schema/data were not modified."
+  ],
+  "users_created": [],
+  "users_reused": [],
+  "counts": {
+    "source": {
+      "muscles": 18,
+      "exercises": 232,
+      "exercise_muscles": 527,
+      "macrocycles": 5,
+      "mesocycles": 6,
+      "microcycles": 13,
+      "training_days": 68,
+      "day_exercises": 519,
+      "workout_logs": 33,
+      "exercise_set_logs": 137,
+      "client_interviews": 4,
+      "client_metrics": 4,
+      "patient_context_snapshots": 0
+    },
+    "target_before": {
+      "muscles": 4,
+      "exercises": 0,
+      "exercise_muscles": 0,
+      "macrocycles": 0,
+      "mesocycles": 0,
+      "microcycles": 0,
+      "training_days": 0,
+      "day_exercises": 0,
+      "workout_logs": 0,
+      "exercise_set_logs": 0,
+      "client_interviews": 0,
+      "client_metrics": 0,
+      "patient_context_snapshots": 0
+    }
+  },
+  "validation": {
+    "source_connection": "ok",
+    "target_connection": "ok",
+    "schema_sql_exists": true,
+    "missing_source_tables": [],
+    "missing_target_tables_before_schema_migration": [
+      "client_metrics",
+      "patient_context_snapshots"
+    ]
+  }
+}

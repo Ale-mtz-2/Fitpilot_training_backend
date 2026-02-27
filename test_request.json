@@ -1,0 +1,36 @@
+{
+  "user_profile": {
+    "fitness_level": "advanced",
+    "age": 31,
+    "weight_kg": 85,
+    "height_cm": 180,
+    "gender": "male",
+    "training_experience_months": 50
+  },
+  "goals": {
+    "primary_goal": "fat_loss",
+    "target_muscle_groups": ["shoulders"],
+    "specific_goals": ["Busco una recomposición corporal."]
+  },
+  "availability": {
+    "days_per_week": 5,
+    "session_duration_minutes": 90,
+    "preferred_days": [1, 2, 4, 5, 6]
+  },
+  "equipment": {
+    "has_gym_access": true,
+    "available_equipment": ["bodyweight", "barbell", "dumbbells", "machines", "cables", "bench", "pull_up_bar", "squat_rack"]
+  },
+  "restrictions": {
+    "injuries": [],
+    "excluded_exercises": ["Patada de tríceps con mancuerna"],
+    "mobility_limitations": "Poca dorsiflexion"
+  },
+  "program_duration": {
+    "total_weeks": 8,
+    "mesocycle_weeks": 4,
+    "include_deload": true,
+    "start_date": "2025-12-01"
+  },
+  "client_id": "69f6487b-7a20-4e55-bf31-918f79631ff3"
+}

@@ -1,0 +1,69 @@
+﻿============================================================
+  Modifying Christian Cruz's Training Program
+============================================================
+
+Program: Torso-Pierna Hipertrofia
+Client ID: 94654cbe-e332-4cc6-ae96-0faf59eee7e8
+
+--- 1. Adding Rest Day 3 ---
+  Created Rest Day 3 (ID: 800438b0-aab8-452d-b809-902281b71420)
+
+--- 2. Adding Warmup Exercises ---
+  Torso A: Added CÝrculos de Brazos as warmup (ID: 5bd7ebef-daeb-4b3a-af73-e77bb58e6a1d)
+  Pierna A: Added Balanceo de Piernas as warmup (ID: 03e797e2-060b-433a-9e66-563e441d6b1f)
+  Torso B: Added Separaci¾n de Banda as warmup (ID: d2042988-54ac-40db-b38d-33fa5b2c30c0)
+  Pierna B: Added CÝrculos de Cadera as warmup (ID: e1befb31-5274-4c18-8117-5086859fd249)
+
+--- 3. Adding Core & Mobility Day ---
+  Converted Day 6 to 'Core y Movilidad' with 5 exercises
+
+============================================================
+  ALL CHANGES COMMITTED SUCCESSFULLY
+============================================================
+
+--- Final Program Structure ---
+
+  Day 1: Torso A - ╔nfasis Press
+    [warmup] 0. CÝrculos de Brazos: 2x15-15
+    [main] 2. Press de Banca Inclinado con Barra: 3x6-8
+    [main] 3. Remo con Barra: 3x8-10
+    [main] 4. Press Militar: 3x8-10
+    [main] 5. Jal¾n al Pecho Agarre Ancho: 3x10-12
+    [main] 6. Elevaci¾n Lateral en Polea: 2x12-15
+    [main] 7. Extensi¾n de TrÝceps con V-Bar: 2x10-12
+
+  Day 2: Pierna A - ╔nfasis Sentadilla
+    [warmup] 0. Balanceo de Piernas: 2x15-15
+    [main] 2. Sentadilla Trasera: 3x6-8
+    [main] 3. Peso Muerto Rumano: 3x8-10
+    [main] 4. Prensa de Pierna: 3x10-12
+    [main] 5. Curl de Pierna Sentado: 3x12-15
+    [main] 6. Elevaci¾n de Talones de Pie: 3x15-20
+
+  Day 3: Descanso [REST]
+
+  Day 4: Torso B - ╔nfasis Pull
+    [warmup] 0. Separaci¾n de Banda: 2x15-15
+    [main] 2. Remo con Apoyo de Pecho: 3x8-10
+    [main] 3. Press Inclinado con Mancuernas: 3x8-10
+    [main] 4. Tir¾n Facial con Cable: 3x15-20
+    [main] 5. Cruce de Poleas Alto a Bajo: 2x12-15
+    [main] 6. Curl Martillo Cruzado: 2x10-12
+    [main] 7. Extensi¾n de TrÝceps sobre Cabeza: 2x10-12
+
+  Day 5: Pierna B - ╔nfasis Bisagra
+    [warmup] 0. CÝrculos de Cadera: 2x15-15
+    [main] 1. Peso Muerto: 3x5-6
+    [main] 2. Empuje de Cadera con Barra: 3x8-12
+    [main] 3. Sentadilla B·lgara: 3x8-10
+    [main] 4. Extensi¾n de Pierna: 3x12-15
+    [main] 5. Elevaci¾n de Talones en Prensa: 3x15-20
+
+  Day 6: Core y Movilidad
+    [main] 0. Dead Bug: 3x10-12
+    [main] 1. Plancha Lateral: 2x30s
+    [main] 2. Crunch Inverso: 3x12-15
+    [cooldown] 3. Rotaci¾n de Columna Torßcica: 2x10-10
+    [cooldown] 4. Estiramiento Gato-Vaca: 2x10-10
+
+  Day 7: Descanso [REST]

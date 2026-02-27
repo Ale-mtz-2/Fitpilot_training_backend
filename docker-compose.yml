@@ -38,9 +38,13 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+    env_file:
+      - .env
     environment:
       DATABASE_URL: postgresql://admin:secretpass@postgres:5432/fitpilot_db
       REDIS_URL: redis://redis:6379
+      OLLAMA_HOST: http://ollama:11434
+      OLLAMA_MODEL: llama3.2:3b
     ports:
       - "8000:8000"
     command: uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
@@ -57,5 +61,46 @@ services:
     environment:
       VITE_API_URL: http://localhost:8000/api
 
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: fitpilot_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@fitpilot.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+  muscle-image-api:
+    build:
+      context: ./muscle-image-api
+      dockerfile: Dockerfile
+    container_name: fitpilot_muscle_api
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  # Ollama - LLM local para traducción y otras funciones de IA
+  ollama:
+    image: ollama/ollama
+    container_name: fitpilot_ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
 volumes:
   postgres_data:
+  pgadmin_data:
+  ollama_data:

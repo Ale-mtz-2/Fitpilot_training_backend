@@ -9,6 +9,14 @@ from schemas.client_interview import (
     ClientInterviewResponse,
 )
 from core.dependencies import get_current_user
+from core.config import settings
+from repositories.training_compat.client_interviews import (
+    delete_interview as compat_delete_interview,
+    get_interview_by_client_id as compat_get_interview_by_client_id,
+    upsert_interview as compat_upsert_interview,
+)
+from repositories.training_compat.types import CompatUserContext
+from repositories.training_compat.users import get_user_context_by_id
 
 router = APIRouter()
 
@@ -17,7 +25,7 @@ router = APIRouter()
 def get_client_interview(
     client_id: str,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User | CompatUserContext = Depends(get_current_user)
 ):
     """Get interview data for a specific client"""
 
@@ -29,10 +37,15 @@ def get_client_interview(
         )
 
     # Verify client exists
-    client = db.query(User).filter(
-        User.id == client_id,
-        User.role == UserRole.CLIENT
-    ).first()
+    if settings.DB_MODE == "training_compat":
+        client = get_user_context_by_id(db, client_id)
+        if client and client.role != UserRole.CLIENT:
+            client = None
+    else:
+        client = db.query(User).filter(
+            User.id == client_id,
+            User.role == UserRole.CLIENT
+        ).first()
 
     if not client:
         raise HTTPException(
@@ -40,9 +53,12 @@ def get_client_interview(
             detail="Client not found"
         )
 
-    interview = db.query(ClientInterview).filter(
-        ClientInterview.client_id == client_id
-    ).first()
+    if settings.DB_MODE == "training_compat":
+        interview = compat_get_interview_by_client_id(db, client_id)
+    else:
+        interview = db.query(ClientInterview).filter(
+            ClientInterview.client_id == client_id
+        ).first()
 
     if not interview:
         raise HTTPException(
@@ -58,7 +74,7 @@ def create_client_interview(
     client_id: str,
     interview_data: ClientInterviewCreate,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User | CompatUserContext = Depends(get_current_user)
 ):
     """Create interview data for a client"""
 
@@ -70,10 +86,15 @@ def create_client_interview(
         )
 
     # Verify client exists
-    client = db.query(User).filter(
-        User.id == client_id,
-        User.role == UserRole.CLIENT
-    ).first()
+    if settings.DB_MODE == "training_compat":
+        client = get_user_context_by_id(db, client_id)
+        if client and client.role != UserRole.CLIENT:
+            client = None
+    else:
+        client = db.query(User).filter(
+            User.id == client_id,
+            User.role == UserRole.CLIENT
+        ).first()
 
     if not client:
         raise HTTPException(
@@ -82,9 +103,12 @@ def create_client_interview(
         )
 
     # Check if interview already exists
-    existing = db.query(ClientInterview).filter(
-        ClientInterview.client_id == client_id
-    ).first()
+    if settings.DB_MODE == "training_compat":
+        existing = compat_get_interview_by_client_id(db, client_id)
+    else:
+        existing = db.query(ClientInterview).filter(
+            ClientInterview.client_id == client_id
+        ).first()
 
     if existing:
         raise HTTPException(
@@ -93,6 +117,15 @@ def create_client_interview(
         )
 
     # Create new interview
+    if settings.DB_MODE == "training_compat":
+        interview = compat_upsert_interview(
+            db,
+            client_id=client_id,
+            payload=interview_data.model_dump(exclude_unset=True),
+        )
+        db.commit()
+        return interview
+
     interview = ClientInterview(
         client_id=client_id,
         **interview_data.model_dump(exclude_unset=True)
@@ -110,7 +143,7 @@ def update_client_interview(
     client_id: str,
     interview_data: ClientInterviewUpdate,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User | CompatUserContext = Depends(get_current_user)
 ):
     """Update interview data for a client (creates if doesn't exist)"""
 
@@ -122,16 +155,30 @@ def update_client_interview(
         )
 
     # Verify client exists
-    client = db.query(User).filter(
-        User.id == client_id,
-        User.role == UserRole.CLIENT
-    ).first()
+    if settings.DB_MODE == "training_compat":
+        client = get_user_context_by_id(db, client_id)
+        if client and client.role != UserRole.CLIENT:
+            client = None
+    else:
+        client = db.query(User).filter(
+            User.id == client_id,
+            User.role == UserRole.CLIENT
+        ).first()
 
     if not client:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Client not found"
         )
+
+    if settings.DB_MODE == "training_compat":
+        interview = compat_upsert_interview(
+            db,
+            client_id=client_id,
+            payload=interview_data.model_dump(exclude_unset=True),
+        )
+        db.commit()
+        return interview
 
     interview = db.query(ClientInterview).filter(
         ClientInterview.client_id == client_id
@@ -160,7 +207,7 @@ def update_client_interview(
 def delete_client_interview(
     client_id: str,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User | CompatUserContext = Depends(get_current_user)
 ):
     """Delete interview data for a client"""
 
@@ -171,17 +218,26 @@ def delete_client_interview(
             detail="Only trainers and admins can delete client interviews"
         )
 
-    interview = db.query(ClientInterview).filter(
-        ClientInterview.client_id == client_id
-    ).first()
+    if settings.DB_MODE == "training_compat":
+        deleted = compat_delete_interview(db, client_id=client_id)
+        if not deleted:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Interview not found"
+            )
+        db.commit()
+    else:
+        interview = db.query(ClientInterview).filter(
+            ClientInterview.client_id == client_id
+        ).first()
 
-    if not interview:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Interview not found"
-        )
+        if not interview:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Interview not found"
+            )
 
-    db.delete(interview)
-    db.commit()
+        db.delete(interview)
+        db.commit()
 
     return None

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "chest",
+    "display_name_es": "Pecho",
+    "body_region": "upper_body"
+  },
+  {
+    "id": 2,
+    "name": "back",
+    "display_name_es": "Espalda",
+    "body_region": "upper_body"
+  },
+  {
+    "id": 3,
+    "name": "quads",
+    "display_name_es": "Cuádriceps",
+    "body_region": "lower_body"
+  },
+  {
+    "id": 4,
+    "name": "glutes",
+    "display_name_es": "Glúteos",
+    "body_region": "lower_body"
+  }
+]

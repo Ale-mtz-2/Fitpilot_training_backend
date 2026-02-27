@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import Optional
 from models.base import get_db
 from models.user import User
-from models.mesocycle import Macrocycle, Microcycle, TrainingDay, DayExercise, IntensityLevel
+from models.mesocycle import Macrocycle, Mesocycle, Microcycle, TrainingDay, DayExercise, IntensityLevel
 from schemas.mesocycle import (
     MicrocycleCreate, MicrocycleUpdate, MicrocycleResponse
 )
@@ -37,6 +37,16 @@ def verify_macrocycle_access(db: Session, macrocycle_id: str, current_user: User
     return macrocycle
 
 
+def get_microcycle_macrocycle_id(db: Session, microcycle: Microcycle) -> str:
+    mesocycle = db.query(Mesocycle).filter(Mesocycle.id == microcycle.mesocycle_id).first()
+    if not mesocycle:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Mesocycle with id {microcycle.mesocycle_id} not found"
+        )
+    return mesocycle.macrocycle_id
+
+
 @router.get("/macrocycle/{macrocycle_id}", response_model=list[MicrocycleResponse])
 def list_microcycles_by_macrocycle(
     macrocycle_id: str,
@@ -47,10 +57,15 @@ def list_microcycles_by_macrocycle(
     # Verify access to the macrocycle
     verify_macrocycle_access(db, macrocycle_id, current_user)
 
-    # Get all microcycles ordered by week_number
-    microcycles = db.query(Microcycle).filter(
-        Microcycle.macrocycle_id == macrocycle_id
-    ).order_by(Microcycle.week_number).all()
+    # Get all microcycles for mesocycles in this macrocycle
+    microcycles = db.query(Microcycle).join(
+        Mesocycle, Microcycle.mesocycle_id == Mesocycle.id
+    ).filter(
+        Mesocycle.macrocycle_id == macrocycle_id
+    ).order_by(
+        Mesocycle.block_number,
+        Microcycle.week_number
+    ).all()
 
     return microcycles
 
@@ -71,7 +86,8 @@ def get_microcycle(
         )
 
     # Verify access through parent macrocycle
-    verify_macrocycle_access(db, microcycle.macrocycle_id, current_user)
+    macrocycle_id = get_microcycle_macrocycle_id(db, microcycle)
+    verify_macrocycle_access(db, macrocycle_id, current_user)
 
     return microcycle
 
@@ -80,6 +96,7 @@ def get_microcycle(
 def create_microcycle(
     macrocycle_id: str,
     microcycle_data: MicrocycleCreate,
+    mesocycle_id: Optional[str] = Query(None, description="Target mesocycle ID within the macrocycle"),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
@@ -98,9 +115,30 @@ def create_microcycle(
     # Verify macrocycle exists and user has access
     macrocycle = verify_macrocycle_access(db, macrocycle_id, current_user)
 
+    # Resolve target mesocycle inside this macrocycle
+    if mesocycle_id:
+        target_mesocycle = db.query(Mesocycle).filter(
+            Mesocycle.id == mesocycle_id,
+            Mesocycle.macrocycle_id == macrocycle.id
+        ).first()
+        if not target_mesocycle:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Mesocycle with id {mesocycle_id} not found in macrocycle {macrocycle_id}"
+            )
+    else:
+        target_mesocycle = db.query(Mesocycle).filter(
+            Mesocycle.macrocycle_id == macrocycle.id
+        ).order_by(Mesocycle.block_number).first()
+        if not target_mesocycle:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Cannot create a microcycle without an existing mesocycle in the macrocycle"
+            )
+
     # Create microcycle
     microcycle_dict = microcycle_data.model_dump(exclude={"training_days"})
-    microcycle_dict["macrocycle_id"] = macrocycle_id
+    microcycle_dict["mesocycle_id"] = target_mesocycle.id
 
     new_microcycle = Microcycle(**microcycle_dict)
     db.add(new_microcycle)
@@ -158,7 +196,8 @@ def update_microcycle(
         )
 
     # Verify access through parent macrocycle
-    verify_macrocycle_access(db, microcycle.macrocycle_id, current_user)
+    macrocycle_id = get_microcycle_macrocycle_id(db, microcycle)
+    verify_macrocycle_access(db, macrocycle_id, current_user)
 
     # Update only provided fields
     update_data = microcycle_data.model_dump(exclude_unset=True)
@@ -198,7 +237,8 @@ def delete_microcycle(
         )
 
     # Verify access through parent macrocycle
-    verify_macrocycle_access(db, microcycle.macrocycle_id, current_user)
+    macrocycle_id = get_microcycle_macrocycle_id(db, microcycle)
+    verify_macrocycle_access(db, macrocycle_id, current_user)
 
     db.delete(microcycle)
     db.commit()

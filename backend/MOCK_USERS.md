@@ -23,7 +23,7 @@ password123
 
 | Email | Nombre | Role | Estado |
 |-------|--------|------|--------|
-| `trainer1@fitpilot.com` | Carlos Rodriguez | TRAINER | ✅ Verificado, Activo |
+| `trainer1@fitpilot.com` | Alejandro Martínez | TRAINER | ✅ Verificado, Activo |
 | `trainer2@fitpilot.com` | Maria Garcia | TRAINER | ✅ Verificado, Activo |
 
 **Permisos:** Pueden crear, editar y eliminar ejercicios. Pueden crear y gestionar rutinas.

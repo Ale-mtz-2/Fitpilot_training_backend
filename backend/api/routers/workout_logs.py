@@ -178,7 +178,7 @@ def start_workout(
     return workout_log
 
 
-@router.get("/{workout_log_id}", response_model=WorkoutLogResponse)
+@router.get("/by-id/{workout_log_id}", response_model=WorkoutLogResponse, include_in_schema=False)
 def get_workout_log(
     workout_log_id: str,
     db: Session = Depends(get_db),
@@ -203,7 +203,7 @@ def get_workout_log(
     return workout_log
 
 
-@router.get("/{workout_log_id}/state", response_model=CurrentWorkoutState)
+@router.get("/by-id/{workout_log_id}/state", response_model=CurrentWorkoutState, include_in_schema=False)
 def get_workout_state(
     workout_log_id: str,
     db: Session = Depends(get_db),
@@ -276,7 +276,7 @@ def get_workout_state(
     )
 
 
-@router.patch("/{workout_log_id}", response_model=WorkoutLogResponse)
+@router.patch("/by-id/{workout_log_id}", response_model=WorkoutLogResponse, include_in_schema=False)
 def update_workout_log(
     workout_log_id: str,
     workout_data: WorkoutLogUpdate,
@@ -317,7 +317,7 @@ def update_workout_log(
     return workout_log
 
 
-@router.post("/{workout_log_id}/sets", response_model=ExerciseSetLogResponse, status_code=status.HTTP_201_CREATED)
+@router.post("/by-id/{workout_log_id}/sets", response_model=ExerciseSetLogResponse, status_code=status.HTTP_201_CREATED, include_in_schema=False)
 def log_exercise_set(
     workout_log_id: str,
     set_data: ExerciseSetLogCreate,
@@ -665,3 +665,31 @@ def get_missed_workouts(
         total=len(missed_workouts),
         missed_workouts=missed_workouts
     )
+
+
+# Register dynamic aliases after static routes so `/today` and `/missed` are resolved correctly.
+router.add_api_route(
+    "/{workout_log_id}",
+    get_workout_log,
+    response_model=WorkoutLogResponse,
+    methods=["GET"],
+)
+router.add_api_route(
+    "/{workout_log_id}/state",
+    get_workout_state,
+    response_model=CurrentWorkoutState,
+    methods=["GET"],
+)
+router.add_api_route(
+    "/{workout_log_id}",
+    update_workout_log,
+    response_model=WorkoutLogResponse,
+    methods=["PATCH"],
+)
+router.add_api_route(
+    "/{workout_log_id}/sets",
+    log_exercise_set,
+    response_model=ExerciseSetLogResponse,
+    methods=["POST"],
+    status_code=status.HTTP_201_CREATED,
+)

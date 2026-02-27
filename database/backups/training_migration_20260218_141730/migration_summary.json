@@ -1,0 +1,97 @@
+{
+  "started_at": "2026-02-18T20:17:30.852841+00:00",
+  "finished_at": "2026-02-18T20:17:50.477172+00:00",
+  "status": "failed",
+  "notes": [
+    "Freeze training writes during migration window is required.",
+    "Using transaction + table locks for target training tables.",
+    "Migration failed and was rolled back: invalid input value for enum training.exercise_class: \"conditioning\"\nCONTEXT:  unnamed portal parameter $5 = '...'",
+    "Error: invalid input value for enum training.exercise_class: \"conditioning\"\nCONTEXT:  unnamed portal parameter $5 = '...'"
+  ],
+  "users_created": [
+    {
+      "source_user_id": "231ed91b-0207-41e4-a741-3b396a84ef3e",
+      "target_user_id": 31,
+      "email": "yair.leal@hotmail.com"
+    },
+    {
+      "source_user_id": "7a9871c1-1d53-47de-b79c-e5b0a3902ad9",
+      "target_user_id": 32,
+      "email": "yolanda_saeb@hotmail.com"
+    },
+    {
+      "source_user_id": "2943c951-31ca-472f-bc1e-64b09bd580f2",
+      "target_user_id": 33,
+      "email": "admin@fitpilot.com"
+    },
+    {
+      "source_user_id": "e4244715-20b9-4103-beca-6da91ce89338",
+      "target_user_id": 34,
+      "email": "trainer1@fitpilot.com"
+    },
+    {
+      "source_user_id": "8ad0f894-092e-448c-bc57-15cced818d58",
+      "target_user_id": 35,
+      "email": "trainer2@fitpilot.com"
+    },
+    {
+      "source_user_id": "b0245a5f-7e07-4e27-85d7-1c1cccc0f879",
+      "target_user_id": 36,
+      "email": "client1@fitpilot.com"
+    },
+    {
+      "source_user_id": "5bb507ce-5090-4466-8296-7ebbb695ba20",
+      "target_user_id": 37,
+      "email": "client2@fitpilot.com"
+    },
+    {
+      "source_user_id": "6a64e807-0bc6-4248-aec1-55015b2e6b4e",
+      "target_user_id": 38,
+      "email": "client3@fitpilot.com"
+    },
+    {
+      "source_user_id": "d9db0550-0b04-45cd-b3ed-92ecea0fe11c",
+      "target_user_id": 39,
+      "email": "yubbi2629@gmail.com"
+    },
+    {
+      "source_user_id": "ca37fdfa-a6ce-4a8f-a904-1a19bb3de92c",
+      "target_user_id": 40,
+      "email": "Itzy2908@hotmail.com"
+    }
+  ],
+  "users_reused": [],
+  "counts": {
+    "source": {
+      "muscles": 18,
+      "exercises": 232,
+      "exercise_muscles": 527,
+      "macrocycles": 5,
+      "mesocycles": 6,
+      "microcycles": 13,
+      "training_days": 68,
+      "day_exercises": 519,
+      "workout_logs": 33,
+      "exercise_set_logs": 137,
+      "client_interviews": 4,
+      "client_metrics": 4,
+      "patient_context_snapshots": 0
+    },
+    "target_before": {
+      "muscles": 4,
+      "exercises": 0,
+      "exercise_muscles": 0,
+      "macrocycles": 0,
+      "mesocycles": 0,
+      "microcycles": 0,
+      "training_days": 0,
+      "day_exercises": 0,
+      "workout_logs": 0,
+      "exercise_set_logs": 0,
+      "client_interviews": 0,
+      "client_metrics": 0,
+      "patient_context_snapshots": 0
+    }
+  },
+  "validation": {}
+}
