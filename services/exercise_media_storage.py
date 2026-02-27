@@ -14,9 +14,6 @@ import logging
 import mimetypes
 import uuid
 
-import boto3
-from botocore.config import Config as BotoConfig
-from botocore.exceptions import BotoCoreError, ClientError
 from fastapi import UploadFile
 
 from core.config import settings
@@ -80,6 +77,9 @@ def _ensure_r2_config() -> None:
 
 
 def _build_r2_client():
+    import boto3
+    from botocore.config import Config as BotoConfig
+
     _ensure_r2_config()
     return boto3.client(
         "s3",
@@ -149,7 +149,7 @@ def upload_exercise_media(exercise_id: str, file: UploadFile) -> str:
             Key=object_key,
             ExtraArgs={"ContentType": content_type},
         )
-    except (BotoCoreError, ClientError, OSError) as exc:
+    except Exception as exc:
         raise StorageError(f"Failed to upload media to R2: {exc}") from exc
 
     return _build_r2_public_url(object_key)
@@ -179,7 +179,7 @@ def upload_local_file_to_r2(local_file_path: Path, exercise_id: str, source_file
                 Key=object_key,
                 ExtraArgs={"ContentType": content_type},
             )
-    except (BotoCoreError, ClientError, OSError) as exc:
+    except Exception as exc:
         raise StorageError(f"Failed to migrate media to R2: {exc}") from exc
 
     return _build_r2_public_url(object_key)
@@ -211,7 +211,7 @@ def delete_exercise_media(media_url: str) -> None:
         try:
             client = _build_r2_client()
             client.delete_object(Bucket=settings.R2_BUCKET, Key=key)
-        except (BotoCoreError, ClientError) as exc:
+        except Exception as exc:
             raise StorageError(f"Failed to delete media from R2: {exc}") from exc
         return
 
