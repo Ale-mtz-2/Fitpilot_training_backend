@@ -33,6 +33,20 @@ class Settings(BaseSettings):
     FRONTEND_URL: str = "http://localhost:3000"
     MOBILE_SCHEME: str = "fitpilot://"
 
+    # Cross-service auth compatibility (Nutrition -> Training)
+    NUTRITION_API_URL: Optional[str] = None
+    NUTRITION_AUTH_ME_PATH: str = "/v1/auth/me"
+    NUTRITION_AUTH_TIMEOUT_SECONDS: int = 8
+
+    # Exercise media storage
+    EXERCISE_MEDIA_PROVIDER: str = "local"  # local | r2
+    R2_ENDPOINT: Optional[str] = None
+    R2_REGION: str = "auto"
+    R2_BUCKET: Optional[str] = None
+    R2_ACCESS_KEY_ID: Optional[str] = None
+    R2_SECRET_ACCESS_KEY: Optional[str] = None
+    R2_PUBLIC_BASE_URL: Optional[str] = None
+
     # Ollama (LLM local para traducción)
     OLLAMA_HOST: str = "http://localhost:11434"
     OLLAMA_MODEL: str = "llama3.2:3b"
