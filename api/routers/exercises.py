@@ -5,9 +5,6 @@ Provides CRUD operations for exercises with muscle relationships.
 from fastapi import APIRouter, Depends, HTTPException, status, Query, UploadFile, File
 from sqlalchemy.orm import Session, joinedload
 from typing import Optional, List
-import os
-import uuid
-import shutil
 from pathlib import Path
 
 from models.base import get_db
@@ -18,12 +15,14 @@ from models.exercise_muscle import ExerciseMuscle
 from schemas.exercise import ExerciseCreate, ExerciseUpdate, ExerciseResponse, ExerciseListResponse
 from schemas.muscle import ExerciseMuscleResponse
 from core.dependencies import get_current_user, require_trainer
+from services.exercise_media_storage import (
+    StorageError,
+    upload_exercise_media,
+    delete_exercise_media,
+)
 
 router = APIRouter()
 
-# Configure upload directory
-UPLOAD_DIR = Path(__file__).parent.parent.parent / "static" / "exercises"
-UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".gif", ".webp"}
 MAX_FILE_SIZE_MB = 5
 MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024
@@ -426,30 +425,28 @@ async def upload_exercise_image(
             detail="El archivo está vacío"
         )
 
-    # Generate unique filename
-    unique_filename = f"{exercise_id}_{uuid.uuid4().hex[:8]}{file_ext}"
-    file_path = UPLOAD_DIR / unique_filename
+    old_image_url = exercise.image_url
 
-    # Delete old image if exists
-    if exercise.image_url:
-        old_filename = exercise.image_url.split("/")[-1]
-        old_file_path = UPLOAD_DIR / old_filename
-        if old_file_path.exists():
-            old_file_path.unlink()
-
-    # Save new file
+    # Upload new media first; never delete old reference before successful upload.
     try:
-        with open(file_path, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
-    except Exception as e:
+        new_image_url = upload_exercise_media(exercise_id=exercise_id, file=file)
+    except StorageError as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Error al guardar el archivo: {str(e)}"
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail=f"Error al subir la imagen del ejercicio: {str(e)}"
         )
 
-    # Update exercise with new image URL
-    exercise.image_url = f"/static/exercises/{unique_filename}"
+    # Persist new URL
+    exercise.image_url = new_image_url
     db.commit()
+
+    # Best-effort cleanup of previous image after successful update
+    if old_image_url and old_image_url != new_image_url:
+        try:
+            delete_exercise_media(old_image_url)
+        except StorageError:
+            # Do not fail request after successful update
+            pass
 
     return build_exercise_response(exercise)
 
@@ -480,11 +477,13 @@ def delete_exercise_image(
             detail="El ejercicio no tiene una imagen personalizada"
         )
 
-    # Delete file from disk
-    filename = exercise.image_url.split("/")[-1]
-    file_path = UPLOAD_DIR / filename
-    if file_path.exists():
-        file_path.unlink()
+    try:
+        delete_exercise_media(exercise.image_url)
+    except StorageError as e:
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail=f"No se pudo eliminar la imagen en storage: {str(e)}"
+        )
 
     # Clear image URL
     exercise.image_url = None
